@@ -1,14 +1,15 @@
-// Esquema de manipulacion de los articulos
+// Importacion de mongoose:
 const { Schema, model } = require("mongoose");
 
+// Esquema que describe los campos de un articulo:
 const ArticuloSchema = Schema({
     titulo: {
         type: String,
-        require: true
+        required: true
     },
     contenido: {
         type: String,
-        require: true
+        required: true
     },
     fecha: {
         type: Date,
@@ -20,4 +21,5 @@ const ArticuloSchema = Schema({
     },
 });
 
+// Exporta el modelo para poder crear, leer, actualizar y borrar artículos:
 module.exports = model("Articulo", ArticuloSchema, "articulos");
