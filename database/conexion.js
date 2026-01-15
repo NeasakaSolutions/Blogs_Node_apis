@@ -1,21 +1,22 @@
-// Importacion de librerias
-const mongoose = require("mongoose"); // La libreria mongoose se guarda en una variable
+// Conexion con MySQL
+const mysql = require("mysql2/promise");
 
-// Funcion asincrona que se encarga de conectar con la base de datos
-const conexion = async() => {
-    
-    try{
-        // Conexion a la db
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log("Conectado correctamente a la base de datos de mongoose.");
+const conexion = async () => {
+  try {
+    const connection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME
+    });
 
-    } catch(error){
-        console.log(error); // Error real dentro de la consola
-        throw new Error("No se ha podido conectar a la base de datos de mongose.");
-    };
+    console.log("Conectado correctamente a MySQL");
+    return connection;
+
+  } catch (error) {
+    console.error(error);
+    throw new Error("No se pudo conectar a MySQL");
+  }
 };
 
-// Exporta la funcion para poder usarla en otros archivos del proyecto
-module.exports = {
-    conexion
-};
+module.exports = { conexion };
