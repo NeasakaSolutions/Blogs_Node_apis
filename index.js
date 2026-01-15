@@ -27,12 +27,19 @@ app.use(express.json());
 app.get("/probando", (req, res) => {
     console.log("Se ha ejecutado el endpoint probando.");
 
+    return res.status(200).json({
+        nombre: "Nea",
+        apellido: "Pendragon",
+        url: "youtube.com"
+    });
+});
+
+app.get("/", (req, res) => {
+    console.log("Se ha ejecutado el endpoint probando.");
+
     return res.status(200).send(`
-        <div>
-            <h3>Probando ruta de nodejs</h3>
-            <p>Creando api rest con node</p>
-        </div>
-    `);
+            <h1>Creacion de apis</h1>
+        `);
 });
 
 // Crear servidor y escuchar peticiones:
