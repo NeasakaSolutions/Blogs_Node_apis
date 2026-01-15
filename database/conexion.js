@@ -6,7 +6,6 @@ const conexion = async() => {
     
     try{
         // Conexion a la db
-        //await mongoose.connect("mongodb://localhost:27017/mi_blog");
         await mongoose.connect(process.env.MONGO_URI);
         console.log("Conectado correctamente a la base de datos.");
 
