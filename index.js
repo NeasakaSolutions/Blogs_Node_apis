@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Importaciones:
-const { conexion } = require("./database/conexion"); // Conexion a la db
+const { conexion } = require("./database/conexion_mysql"); // Conexion a la db
 const express = require("express");
 const cors = require("cors");
 
