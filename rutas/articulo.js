@@ -6,5 +6,8 @@ const ArticuloControlador = require("../controladores/articulo");
 // Rutas de prueba:
 router.get("/ruta-de-prueba", ArticuloControlador.prueba);
 
+// Ruta para crear articulos:
+router.post("/crear", ArticuloControlador.guardar);
+
 // Exportacion de las rutas:
 module.exports = router;

@@ -14,7 +14,8 @@ const puerto = 3900;
 app.use(cors()); // Se ejecuta el cors antes de cualquier ruta
 
 // Convertir body a objeto js:
-app.use(express.json());
+app.use(express.json()); // Recibir datos en formato json
+app.use(express.urlencoded({extended:true})); // Recibir datos en formato urlencoded
 
 // Inicializar app:
 console.log("App de node arrancada.");
