@@ -9,7 +9,7 @@ const prueba = (req, res) => {
     });
 }
 
-// Metodo para crear un articulo
+// Metodo Post
 const guardar = async(req, res) => {
 
     // Recoger parametros por post a guardar:
@@ -56,10 +56,40 @@ const guardar = async(req, res) => {
     
 };
 
+// Metodo Get:
+const listar = async(req, res) => {
+
+    try {
+        // Ejecutar consulta
+        const articulos = await Articulo.find({});
+
+        if(!articulos || articulos.isLength === 0){
+            return res.status(404).json({
+                status: "Error",
+                mensaje: "No se encontraron articulos."
+            });
+        }
+
+        // Devolver los articulos disponibles
+        return res.status(200).send({
+            status: "success",
+            articulos
+        });
+
+    } catch(error) {
+        return res.status(500).json({
+            status: "Error",
+            mensaje: "Error al obtener los articulos."
+        });
+    };
+
+};
+
 // Exporta los metodos del controlador
 module.exports = {
     prueba,
-    guardar
+    guardar,
+    listar
 }
 
 
